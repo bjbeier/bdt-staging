@@ -1,175 +1,371 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Blue Droid Technologies | Support Made Simple</title>
+
     <meta name="description" content="Local Milford tech support for residential and small business. Over 20 years experience. Personal, patient service.">
+
+    
+
+    <!-- Security Headers (Meta Tags - Server-side headers recommended) -->
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-CSP_NONCE_PLACEHOLDER' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none';">
+
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    
+
     <link rel="stylesheet" href="styles.css">
+
     <link rel="icon" type="image/png" href="images/favicon.png">
-     <!-- Google tag (gtag.js) - Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-353553686"></script>
-    <script>
+
+    
+
+    <!-- Google tag (gtag.js) - Google Analytics 4 with SRI -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-353553686" 
+
+            integrity="sha384-placeholder" 
+
+            crossorigin="anonymous"
+
+            nonce="CSP_NONCE_PLACEHOLDER"></script>
+
+    <script nonce="CSP_NONCE_PLACEHOLDER">
+
       window.dataLayer = window.dataLayer || [];
+
       function gtag(){dataLayer.push(arguments);}
+
       gtag('js', new Date());
+
       gtag('config', 'G-353553686');
+
     </script>
+
 </head>
+
 <body>
+
     <!-- Shared Navigation (rendered via scripts.js) -->
+
     <header id="site-header"></header>
 
+
+
     <!-- Hero Section -->
+
     <section class="hero">
+
         <!-- Dark/Light Mode Toggle -->
+
         <button id="themeSwitch" aria-label="Toggle dark mode" class="hero-toggle">
+
             <svg id="sunIcon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
                 <circle cx="12" cy="12" r="5"></circle>
+
                 <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+
             </svg>
+
             <svg id="moonIcon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+
             </svg>
+
         </button>
+
         <h1>Support Made Simple</h1>
+
         <p>Your local tech expert with over 20 years experience</p>
+
         <a href="#contact" class="cta-button">Get Help Today</a>
+
     </section>
+
+
 
     <!-- Trust Indicators -->
+
     <section class="trust-section">
+
         <div class="trust-grid">
+
             <div class="trust-item">
-                <div class="trust-icon">🏠</div>
+
+                <div class="trust-icon">??</div>
+
                 <h3>Locally Owned &amp; Operated</h3>
+
                 <p>Proudly serving Milford &amp; surrounding communities</p>
+
             </div>
+
             <div class="trust-item">
-                <div class="trust-icon">⭐</div>
+
+                <div class="trust-icon">?</div>
+
                 <h3>20+ Years Experience</h3>
+
                 <p>Trusted expertise you can count on</p>
+
             </div>
+
             <div class="trust-item">
-                <div class="trust-icon">💙</div>
+
+                <div class="trust-icon">??</div>
+
                 <h3>Personal Service</h3>
+
                 <p>Patient, friendly support without the jargon</p>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <!-- Services Section -->
+
     <section id="services" class="services-section">
+
         <div class="container">
+
             <h2 class="section-title">How Can I Help You?</h2>
+
             <p class="section-subtitle">Whether you're at home or running a business, I'm here to make technology work for you</p>
 
+
+
             <!-- Residential Services -->
+
             <div class="service-category">
+
                 <h3 class="category-title">Residential Services</h3>
+
                 <div class="service-grid">
+
                     <div class="service-card">
-                        <div class="service-icon">💻</div>
+
+                        <div class="service-icon">??</div>
+
                         <h3>PC &amp; Laptop Repair</h3>
+
                         <p>Computer running slow or acting up? I'll get it back to peak performance.</p>
+
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">📶</div>
+
+                        <div class="service-icon">??</div>
+
                         <h3>WiFi Setup</h3>
+
                         <p>Upgrading or expanding your WiFi? I'll ensure full coverage throughout your home.</p>
+
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">🏡</div>
+
+                        <div class="service-icon">??</div>
+
                         <h3>Smart Home Setup</h3>
+
                         <p>Need help with smart speakers, displays, or home automation? I've got you covered.</p>
+
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">📱</div>
+
+                        <div class="service-icon">??</div>
+
                         <h3>Smartphone &amp; Tablet Help</h3>
-                        <p>New device setup, data migration, or just learning the features—I can help.</p>
+
+                        <p>New device setup, data migration, or just learning the features�I can help.</p>
+
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">🖥️</div>
+
+                        <div class="service-icon">???</div>
+
                         <h3>Home Office Setup</h3>
+
                         <p>Working from home? Let me help you create a productive, organized workspace.</p>
+
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">♻️</div>
+
+                        <div class="service-icon">??</div>
+
                         <h3>Electronics Recycling</h3>
+
                         <p>Responsibly dispose of old equipment with secure data wiping or destruction.</p>
+
                     </div>
+
                 </div>
+
             </div>
+
+
 
             <!-- Business Services -->
+
             <div class="service-category">
+
                 <h3 class="category-title">Small Business Services</h3>
+
                 <div class="service-grid">
+
                     <div class="service-card">
-                        <div class="service-icon">🔧</div>
+
+                        <div class="service-icon">??</div>
+
                         <h3>IT Support</h3>
+
                         <p>Onsite or remote support to keep your business technology running smoothly.</p>
+
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">🌐</div>
+
+                        <div class="service-icon">??</div>
+
                         <h3>Network Setup &amp; Management</h3>
+
                         <p>Reliable network infrastructure tailored to your business needs.</p>
+
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">🛡️</div>
+
+                        <div class="service-icon">???</div>
+
                         <h3>Security Solutions</h3>
+
                         <p>Protect your business data with proper security measures and best practices.</p>
+
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">📊</div>
+
+                        <div class="service-icon">??</div>
+
                         <h3>Device Management</h3>
+
                         <p>Keep your business computers, phones, and tablets organized and up-to-date.</p>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <!-- About Section -->
+
     <section id="about" class="about-section">
+
         <div class="container">
+
             <div class="about-content">
+
                 <div class="about-text">
+
                     <h2>About Blue Droid Technologies</h2>
+
                     <p>Hi, I'm your local tech expert here in Milford, OH. With over 20 years of experience in technology support, I started Blue Droid Technologies to provide the kind of personal, patient service that's missing from big box stores.</p>
-                    <p>I believe technology should make your life easier, not more complicated. Whether you need help with a simple question or a complex setup, I'm here to help—in plain English, without the jargon.</p>
-                    <p>When you work with me, you're supporting a local business and getting someone who genuinely cares about solving your problem. No upselling, no pressure—just honest, reliable service.</p>
+
+                    <p>I believe technology should make your life easier, not more complicated. Whether you need help with a simple question or a complex setup, I'm here to help�in plain English, without the jargon.</p>
+
+                    <p>When you work with me, you're supporting a local business and getting someone who genuinely cares about solving your problem. No upselling, no pressure�just honest, reliable service.</p>
+
                     <p><strong>First responders, veterans, and teachers:</strong> Ask me about special discounts. Thank you for your service!</p>
+
                 </div>
+
                 <div class="about-image">
+
                     <img src="images/bjbeier.jpg" alt="BJ Beier" class="about-photo">
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <!-- Contact Section -->
+
     <section id="contact" class="contact-section">
+
         <div class="container">
+
             <h2 class="section-title">Get In Touch</h2>
+
             <p class="section-subtitle">Ready to get started? I'm just a phone call, text message or email away.</p>
+
             
+
             <div class="contact-methods">
+
                 <div class="contact-card">
-                    <h3>📞 Call or Text</h3>
+
+                    <h3>?? Call or Text</h3>
+
                     <a href="tel:5132126714">(513) 212-6714</a>
+
                 </div>
+
                 <div class="contact-card">
-                    <h3>📧 Email</h3>
-                    <a href="mailto:contact@bluedroidtech.com">contact@bluedroidtech.com</a>
+
+                    <h3>?? Email</h3>
+
+                    <!-- Email obfuscated via JavaScript -->
+
+                    <a href="#" id="emailLink" data-user="contact" data-domain="bluedroidtech.com">Click to reveal email</a>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
+
+
     <!-- Shared Footer (rendered via scripts.js) -->
+
     <footer id="site-footer"></footer>
 
-    <script src="scripts.js" defer></script>
+
+
+    <script src="scripts.js" defer nonce="CSP_NONCE_PLACEHOLDER"></script>
+
 </body>
+
 </html>
