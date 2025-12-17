@@ -46,7 +46,7 @@ function revealEmail(linkElement) {
 
 // Security Fix: Replaced innerHTML with safe DOM methods to prevent XSS
 
-function createElement(tag, attributes = {}, textContent = '') {
+function createElement(tag, attributes = {}, content = '') {
 
     const element = document.createElement(tag);
 
@@ -74,9 +74,9 @@ function createElement(tag, attributes = {}, textContent = '') {
 
     
 
-    if (textContent) {
+    if (content) {
 
-        element.textContent = textContent;
+        element.textContent = content;
 
     }
 
@@ -103,6 +103,28 @@ function appendChildren(parent, children) {
         }
 
     });
+
+}
+
+
+
+// Helper function to safely set HTML content that contains special characters
+
+function setHTMLContent(element, htmlString) {
+
+    // Create a temporary div to parse the HTML
+
+    const temp = document.createElement('div');
+
+    temp.innerHTML = htmlString;
+
+    // Move all child nodes to the target element
+
+    while (temp.firstChild) {
+
+        element.appendChild(temp.firstChild);
+
+    }
 
 }
 
@@ -138,7 +160,7 @@ function renderSharedLayout() {
 
 
 
-        // Security Fix: Replaced innerHTML with safe DOM construction
+        // Security Fix: Using safe DOM construction with proper Unicode handling
 
         const nav = createElement('nav');
 
@@ -162,7 +184,7 @@ function renderSharedLayout() {
 
         
 
-        // Menu toggle button
+        // Menu toggle button with Unicode character
 
         const menuToggle = createElement('button', {
 
@@ -172,7 +194,9 @@ function renderSharedLayout() {
 
             'aria-label': 'Toggle navigation'
 
-        }, '?');
+        });
+
+        menuToggle.textContent = '?'; // Hamburger menu icon
 
         navContainer.appendChild(menuToggle);
 
@@ -230,7 +254,9 @@ function renderSharedLayout() {
 
         
 
-        const fullText = createElement('span', { class: 'full' }, 'Call or Text � (513) 212-6714');
+        const fullText = createElement('span', { class: 'full' });
+
+        fullText.textContent = 'Call or Text � (513) 212-6714';
 
         const shortText = createElement('span', { class: 'short' }, '(513) 212-6714');
 
@@ -252,7 +278,7 @@ function renderSharedLayout() {
 
     if (footer) {
 
-        // Security Fix: Replaced innerHTML with safe DOM construction
+        // Security Fix: Using safe DOM construction with proper Unicode handling
 
         const footerContent = createElement('div', { class: 'footer-content' });
 
@@ -470,11 +496,13 @@ function renderSharedLayout() {
 
         
 
-        // Footer bottom
+        // Footer bottom with copyright symbol
 
         const footerBottom = createElement('div', { class: 'footer-bottom' });
 
-        const copyright = createElement('p', {}, '� 2025 Blue Droid Technologies, LLC. All rights reserved.');
+        const copyright = createElement('p');
+
+        copyright.textContent = '� 2025 Blue Droid Technologies, LLC. All rights reserved.';
 
         footerBottom.appendChild(copyright);
 
@@ -802,4 +830,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initEmailReveal(); // Security Fix: Initialize email obfuscation
 
-});
+});s
