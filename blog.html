@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Blue Droid Technologies</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+
+<body>
+    <header id="site-header"></header>
+
+    <div class="page-hero">
+        <button id="themeSwitch" aria-label="Toggle dark mode" class="hero-toggle" style="display:none">
+            <!-- Toggle logic usually in index.html, hidden here if handled by script -->
+        </button>
+        <h1>Insights & Updates</h1>
+        <p>Tech tips, news, and guides from Blue Droid Technologies</p>
+    </div>
+
+    <main class="container">
+        <div id="blog-list" class="service-grid">
+            <div class="text-center">Loading articles...</div>
+        </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="scripts.js" defer></script>
+    <script src="CMS/blog-loader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait for shared layout to render if needed, or just load posts
+            setTimeout(() => {
+                loadPosts('blog-list');
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

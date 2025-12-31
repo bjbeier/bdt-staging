@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | Blue Droid Technologies</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+
+<body>
+    <header id="site-header"></header>
+
+    <main class="container" style="padding-top: 4rem;">
+        <div id="blog-post-container" class="min-h-[400px]">
+            <div class="text-center">Loading article...</div>
+        </div>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="scripts.js" defer></script>
+    <script src="CMS/blog-loader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                loadSinglePost('blog-post-container');
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

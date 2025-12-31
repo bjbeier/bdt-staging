@@ -96,6 +96,7 @@ function renderSharedLayout() {
             { href: 'index.html', text: 'Home' },
             { href: servicesHref, text: 'Services' },
             { href: 'prices.html', text: 'Pricing' },
+            { href: 'blog.html', text: 'Blog' },
             { href: aboutHref, text: 'About' },
             { href: contactHref, text: 'Contact' }
         ];
@@ -213,15 +214,11 @@ function renderSharedLayout() {
 
 
         const quickLinks = [
-
             { href: 'index.html', text: 'Home' },
-
             { href: 'prices.html', text: 'Pricing' },
-
+            { href: 'blog.html', text: 'Blog' },
             { href: sectionHref('about'), text: 'About' },
-
             { href: sectionHref('contact'), text: 'Contact' }
-
         ];
 
 

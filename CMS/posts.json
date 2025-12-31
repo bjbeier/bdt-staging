@@ -1,0 +1,15 @@
+[
+    {
+        "id": "1",
+        "title": "Welcome to BDT Blog",
+        "slug": "welcome-to-bdt-blog",
+        "date": "2025-01-01",
+        "image": "",
+        "summary": "This is a placeholder post for the Blue Droid Technologies blog.",
+        "content": "<p>Welcome to our new blog! Stay tuned for tech tips and updates.</p>",
+        "tags": [
+            "General",
+            "Welcome"
+        ]
+    }
+]

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDT Blog Manager</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="cms.css">
+</head>
+
+<body>
+    <!-- Apply theme before render -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+    <div class="container">
+        <header>
+            <div class="brand">
+                <h1>Blog Manager</h1>
+            </div>
+            <div class="header-actions">
+                <a href="../index.html" class="btn">Back to Site</a>
+                <button id="theme-toggle" class="btn">Theme</button>
+                <button id="btn-settings" class="btn">Settings</button>
+                <button id="btn-new-post" class="btn btn-primary">New Post</button>
+            </div>
+        </header>
+
+        <main id="post-list" class="post-grid">
+            <!-- Posts injected here -->
+        </main>
+    </div>
+
+    <!-- Editor Modal -->
+    <div id="editor-modal" class="modal-overlay">
+        <div class="modal">
+            <h2 id="modal-title" style="margin-bottom:1.5rem">Edit Post</h2>
+            <form id="post-form">
+                <input type="hidden" id="post-id">
+                <div class="form-group">
+                    <label class="form-label">Title</label>
+                    <input type="text" id="post-title" class="form-input" required>
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem">
+                    <div class="form-group">
+                        <label class="form-label">Slug</label>
+                        <input type="text" id="post-slug" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Date</label>
+                        <input type="date" id="post-date" class="form-input" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Summary</label>
+                    <textarea id="post-summary" class="form-input" style="min-height:80px"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Content (HTML)</label>
+                    <textarea id="post-content" class="form-textarea"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Tags (comma separated)</label>
+                    <input type="text" id="post-tags" class="form-input">
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:1rem">
+                    <button type="button" id="btn-close-editor" class="btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-overlay">
+        <div class="modal" style="max-width: 500px">
+            <h2 style="margin-bottom:1.5rem">GitHub Settings</h2>
+            <form id="settings-form">
+                <div class="form-group">
+                    <label class="form-label">GitHub Username</label>
+                    <input type="text" id="setting-owner" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Repository Name</label>
+                    <input type="text" id="setting-repo" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Branch</label>
+                    <input type="text" id="setting-branch" class="form-input" value="main">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Personal Access Token</label>
+                    <input type="password" id="setting-token" class="form-input" required>
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:1rem">
+                    <button type="button" id="btn-close-settings" class="btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Config</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="status-bar" class="status-bar">
+        <span id="status-msg">Success</span>
+    </div>
+
+    <script src="cms.js"></script>
+    <script>
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+    </script>
+</body>
+
+</html>
