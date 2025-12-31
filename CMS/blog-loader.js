@@ -34,18 +34,23 @@ async function loadPosts(containerId) {
     const html = posts.map(post => {
         const tagsHtml = (post.tags || []).map(t => `#${t}`).join(' ');
         return `
-        <article class="service-card">
-            <header>
-                <div class="blog-meta">
-                    <span>${formatDate(post.date)}</span>
-                    <span class="blog-tags">${tagsHtml}</span>
+        <article class="blog-card">
+            ${post.image ? `<div class="blog-card-image"><img src="${post.image}" alt="${post.title}"></div>` : ''}
+            <div class="blog-card-content">
+                <header>
+                    <div class="blog-meta">
+                        <span>${formatDate(post.date)}</span>
+                        <span class="blog-tags">${tagsHtml}</span>
+                    </div>
+                    <h3>
+                        <a href="post.html?slug=${post.slug}">${post.title}</a>
+                    </h3>
+                </header>
+                <p>${post.summary || ''}</p>
+                <div class="blog-card-footer">
+                    <a href="post.html?slug=${post.slug}" class="read-more">Read Full Article &rarr;</a>
                 </div>
-                <h3>
-                    <a href="post.html?slug=${post.slug}">${post.title}</a>
-                </h3>
-            </header>
-            <p>${post.summary || ''}</p>
-            <a href="post.html?slug=${post.slug}" class="read-more">Read Full Article &rarr;</a>
+            </div>
         </article>
         `;
     }).join('');
