@@ -93,6 +93,7 @@ function renderSharedLayout() {
         const navLinks = createElement('ul', { class: 'nav-links', id: 'navLinks' });
 
         const navItems = [
+            { href: sectionHref('wifi'), text: 'WiFi & Networking' },
             { href: 'index.html', text: 'Home' },
             { href: servicesHref, text: 'Services' },
             { href: 'prices.html', text: 'Pricing' },
