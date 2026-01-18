@@ -10,13 +10,12 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <!-- Security Headers (Meta Tags - Server-side headers recommended) -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;">
+        content="default-src 'self'; script-src 'self' https://www.googletagmanager.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <!-- Google tag (gtag.js) - Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-70WBG7VJPR" crossorigin="anonymous"></script>
-    <script src="analytics.js" defer></script>
+    <script src="analytics.js"></script>
+    <script src="consent-banner.js"></script>
 </head>
 
 <body>
