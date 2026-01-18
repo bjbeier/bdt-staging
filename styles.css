@@ -47,11 +47,16 @@ html.dark .footer-section a:hover {
     color: #ffffff !important;
 }
 
-html.dark nav,
 html.dark .service-card,
 html.dark .contact-card {
     background: #1e293b;
     border-color: #334155;
+}
+
+html.dark nav {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 html.dark .service-card:hover {
@@ -109,12 +114,18 @@ html.dark .hero-toggle:hover {
 
 
 /* ==================== NAVIGATION ==================== */
-nav {
-    background: var(--white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+#site-header {
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .nav-container {
