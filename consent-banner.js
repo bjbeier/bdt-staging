@@ -49,11 +49,20 @@
 
             const heading = banner.querySelector('h3');
             const paragraph = banner.querySelector('p');
+            const acceptBtn = banner.querySelector('#consent-accept');
             const denyBtn = banner.querySelector('#consent-deny');
 
             if (heading) heading.style.color = isDark ? '#fff' : '#0f172a';
             if (paragraph) paragraph.style.color = isDark ? '#94a3b8' : '#475569';
-            if (denyBtn) denyBtn.style.color = isDark ? '#94a3b8' : '#64748b';
+
+            if (acceptBtn) {
+                acceptBtn.style.background = isDark ? '#5B7FE8' : '#4169E1';
+            }
+
+            if (denyBtn) {
+                denyBtn.style.color = isDark ? '#94a3b8' : '#64748b';
+                denyBtn.style.borderColor = isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)';
+            }
         }
 
         banner.innerHTML = `
@@ -63,25 +72,37 @@
                     to { transform: translate(-50%, 0); opacity: 1; }
                 }
                 .consent-btn {
-                    padding: 0.625rem 1.25rem;
-                    border-radius: 0.5rem;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 8px;
                     font-weight: 600;
                     cursor: pointer;
-                    transition: all 0.2s;
+                    transition: all 0.25s ease;
                     font-size: 0.875rem;
                 }
                 .btn-accept {
                     background: #4169E1;
                     color: white;
                     border: none;
+                    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
                 }
-                .btn-accept:hover { background: #3152b1; }
+                .btn-accept:hover { 
+                    transform: translateY(-2px);
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                    filter: brightness(1.1);
+                }
                 .btn-deny {
                     background: transparent;
                     border: 1px solid currentColor;
-                    opacity: 0.8;
+                    opacity: 0.9;
                 }
-                .btn-deny:hover { background: rgba(0,0,0,0.05); opacity: 1; }
+                .btn-deny:hover { 
+                    transform: translateY(-2px);
+                    background: rgba(0,0,0,0.05); 
+                    opacity: 1; 
+                }
+                html.dark .btn-deny:hover {
+                    background: rgba(255,255,255,0.05);
+                }
             </style>
             <div>
                 <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; font-weight: 700;">I value your privacy</h3>
