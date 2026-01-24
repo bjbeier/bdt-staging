@@ -257,12 +257,14 @@ nav {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* ==================== HERO TOGGLE ==================== */
 .hero-toggle {
     position: fixed;
     top: 105px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.25);
-    color: white;
+    background: #475569;
+    /* Darker slate for light mode */
+    color: #ffffff;
     border: none;
     width: 52px;
     height: 52px;
@@ -274,21 +276,32 @@ nav {
     backdrop-filter: blur(8px);
     transition: all 0.3s ease;
     z-index: 900;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Floating Toggle - Scrolled State */
-.hero-toggle.toggle-scrolled {
-    background: var(--white);
+/* In Dark Mode, the toggle is always white */
+html.dark .hero-toggle {
+    background: #ffffff;
     color: var(--primary-blue);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hero-toggle:hover {
+    background: #334155;
+    transform: scale(1.1);
+}
+
+html.dark .hero-toggle:hover {
+    background: #f1f5f9;
+}
+
+/* Maintain scroll state for border if needed, but keep colors consistent */
+.hero-toggle.toggle-scrolled {
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 html.dark .hero-toggle.toggle-scrolled {
-    background: #FFFFFF;
-    color: var(--primary-blue);
-    border-color: #334155;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border: 1px solid #e2e8f0;
 }
 
 html:not(.dark) .hero-toggle.toggle-scrolled #sunIcon {
@@ -297,12 +310,6 @@ html:not(.dark) .hero-toggle.toggle-scrolled #sunIcon {
 
 html:not(.dark) .hero-toggle.toggle-scrolled #moonIcon {
     opacity: 1;
-    color: var(--primary-blue);
-}
-
-.hero-toggle:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.1);
 }
 
 #sunIcon,
