@@ -125,6 +125,8 @@ nav {
     box-shadow: 0 4px 12px rgba(65, 105, 225, 0.3);
 }
 
+
+
 .phone-btn .full {
     display: inline;
 }
@@ -549,13 +551,6 @@ footer {
         font-size: 2rem;
     }
 
-    .hero-toggle {
-        top: 90px;
-        right: 16px;
-        width: 48px;
-        height: 48px;
-    }
-
     /* About */
     .about-content {
         grid-template-columns: 1fr;
@@ -563,11 +558,6 @@ footer {
 
     .about-image {
         order: -1;
-    }
-
-    /* Text Alignment */
-    body {
-        text-align: center;
     }
 
     .about-text p,
@@ -708,7 +698,7 @@ footer {
     align-items: center;
     gap: 0.75rem;
     font-size: 0.85rem;
-    color: #888;
+    color: var(--text-muted);
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -823,6 +813,40 @@ footer {
 }
 
 /* ==================== COOKIE CONSENT BANNER ==================== */
+#cookie-consent-banner {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    color: var(--text-main);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: slideUp 0.5s ease-out;
+    text-align: center;
+}
+
+#cookie-consent-banner h3 {
+    color: var(--primary);
+    margin: 0 0 0.5rem 0;
+}
+
+#cookie-consent-banner p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
 @keyframes slideUp {
     from {
         transform: translate(-50%, 100%);
@@ -835,93 +859,33 @@ footer {
     }
 }
 
-#cookie-consent-banner h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-#cookie-consent-banner p {
-    margin: 0;
-    font-size: 0.8125rem;
-    line-height: 1.5;
-}
-
 .consent-btn {
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.25s ease;
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
 }
 
 .btn-accept {
     background: var(--primary);
     color: white;
     border: none;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.btn-accept:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    filter: brightness(1.1);
 }
 
 .btn-deny {
     background: transparent;
-    border: 1px solid currentColor;
-    opacity: 0.9;
+    border: 1px solid var(--card-border);
+    color: var(--text-muted);
 }
 
 .btn-deny:hover {
     transform: translateY(-2px);
     background: rgba(0, 0, 0, 0.05);
-    opacity: 1;
 }
 
-    background: rgba(255, 255, 255, 0.05);
-}
-/* ==================== BACK TO TOP BUTTON (CSS ONLY) ==================== */
-
-.back-to-top-button {
-    position: sticky;
-    top: calc(100vh - 100px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background: var(--primary);
-    color: var(--on-primary);
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    pointer-events: auto;
-    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-    opacity: 0.9;
-}
-
-.back-to-top-button:hover {
-    transform: scale(1.1);
-    opacity: 1;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-@media (max-width: 768px) {
-    .back-to-top-wrapper {
-        right: 20px;
-    }
-    .back-to-top-button {
-        width: 45px;
-        height: 45px;
-    }
-}
-
-/* ==================== BACK TO TOP BUTTON (IMPROVED) ==================== */
+/* ==================== BACK TO TOP BUTTON ==================== */
 .back-to-top-wrapper {
     position: fixed;
     bottom: 30px;
@@ -929,7 +893,7 @@ footer {
     z-index: 9999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s, visibility 0.4s, transform 0.4s;
+    transition: all 0.4s ease;
     transform: translateY(20px);
 }
 
@@ -949,7 +913,7 @@ footer {
     color: var(--on-primary);
     border-radius: 50%;
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
@@ -965,6 +929,7 @@ footer {
         bottom: 20px;
         right: 20px;
     }
+
     .back-to-top-button {
         width: 45px;
         height: 45px;
