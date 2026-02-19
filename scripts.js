@@ -1,10 +1,3 @@
-// ==================== THEME INITIALIZATION ====================
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const savedTheme = localStorage.getItem('theme');
-
-if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    document.documentElement.classList.add('dark');
-}
 
 // ==================== EMAIL OBFUSCATION UTILITY ====================
 // Security Fix: Prevent email scraping by bots
@@ -62,6 +55,9 @@ function sectionHref(id) {
 function renderSharedLayout() {
     const header = document.getElementById('site-header');
     const footer = document.getElementById('site-footer');
+
+    // Add a top anchor for the back-to-top button
+    document.body.id = 'top';
 
     if (header) {
         const servicesHref = sectionHref('services');
@@ -416,83 +412,50 @@ function initNav() {
 // ==================== SMOOTH SCROLLING ====================
 
 function initSmoothScroll() {
+    document.addEventListener('click', function (e) {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (!anchor) return;
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const targetId = anchor.getAttribute('href');
+        if (targetId === '#') return;
 
-        anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(targetId);
+        if (target) {
+            e.preventDefault();
 
-            const targetId = this.getAttribute('href');
+            const headerOffset = 80;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition - headerOffset;
+            const duration = 1200;
+            let start = null;
 
-            const target = document.querySelector(targetId);
-
-            if (target) {
-
-                e.preventDefault();
-
-                target.scrollIntoView({
-
-                    behavior: 'smooth',
-
-                    block: 'start'
-
-                });
-
+            function easeInOutCubic(t) {
+                return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
             }
 
-        });
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = easeInOutCubic(Math.min(timeElapsed / duration, 1));
 
+                window.scrollTo(0, startPosition + (distance * run));
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
     });
-
 }
 
 
 
 // ==================== DARK MODE TOGGLE ====================
 
-function initThemeSwitch() {
 
-    const themeSwitch = document.getElementById('themeSwitch');
-
-    if (!themeSwitch) return;
-
-    themeSwitch.addEventListener('click', () => {
-
-        document.documentElement.classList.toggle('dark');
-
-        const isDark = document.documentElement.classList.contains('dark');
-
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
-    });
-
-}
-
-// ==================== FLOATING TOGGLE SCROLL HANDLER ====================
-function initFloatingToggle() {
-    const toggle = document.getElementById('themeSwitch');
-    const hero = document.querySelector('.hero') || document.querySelector('.hero-condensed');
-
-    if (!toggle || !hero) return;
-
-    window.addEventListener('scroll', () => {
-        // Calculate trigger point: when hero bottom passes the button
-        // Simple logic: if scrolled past 100px.
-        // Or if scrolled past hero height relative to viewport.
-        // Button is fixed at ~105px from top.
-        // If hero bottom is < 105px relative to viewport, then button is over content.
-
-        const rect = hero.getBoundingClientRect();
-        const buttonTop = 105; // Approximate fixed top
-
-        // rect.bottom is the distance from viewport top to bottom of hero.
-        // If rect.bottom < buttonTop, we are past hero.
-        if (rect.bottom < buttonTop + 50) { // +50 buffer
-            toggle.classList.add('toggle-scrolled');
-        } else {
-            toggle.classList.remove('toggle-scrolled');
-        }
-    });
-}
 
 // ==================== ELEGANT PARTICLE MOTION FOR HERO ====================
 
@@ -731,13 +694,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initNav();
 
-    initThemeSwitch();
-    initFloatingToggle();
     initSmoothScroll();
 
     initHeroParticles();
 
     initEmailReveal(); // Security Fix: Initialize email obfuscation
     initScrollReveal();
+    initBackToTop();
 
 });
+// ==================== BACK TO TOP BUTTON INITIALIZATION ====================
+function initBackToTop() {
+    if (!document.body.id) document.body.id = 'top';
+
+    const bttWrapper = document.createElement('div');
+    bttWrapper.className = 'back-to-top-wrapper';
+
+    const bttButton = document.createElement('a');
+    bttButton.href = '#top';
+    bttButton.className = 'back-to-top-button';
+    bttButton.setAttribute('aria-label', 'Back to top');
+    bttButton.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>`;
+
+    bttWrapper.appendChild(bttButton);
+    document.body.appendChild(bttWrapper);
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            bttWrapper.classList.add('visible');
+        } else {
+            bttWrapper.classList.remove('visible');
+        }
+    });
+}
