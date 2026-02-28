@@ -87,8 +87,9 @@ nav {
     padding: 1rem 2rem;
 }
 
-.logo {
+.nav-container .logo {
     height: 50px;
+    width: auto !important;
 }
 
 .nav-links {
