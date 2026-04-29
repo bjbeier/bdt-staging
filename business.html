@@ -5,18 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Blog | Blue Droid Technologies</title>
-    <link rel="stylesheet" href="styles.css?v=1.3">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>Business Services | Blue Droid Technologies</title>
+    <meta name="description"
+        content="Professional IT services for small businesses in Milford, OH. EDR protection, remote monitoring, and secure backups to keep your business running smoothly.">
+
     <!-- Security Headers (Meta Tags - Server-side headers recommended) -->
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://static.cloudflareinsights.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://placehold.co https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://cloudflareinsights.com https://static.cloudflareinsights.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
+    <link rel="stylesheet" href="styles.css?v=1.3">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
 </head>
 
 <body>
+
+    <!-- Shared Navigation -->
     <header id="site-header">
         <nav>
     <div class="nav-container">
@@ -42,18 +48,76 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Insights & Updates</h1>
-            <p>Tech tips, news, and guides from Blue Droid Technologies</p>
-            <a href="#blog-list" class="cta-button">Browse Articles</a>
+            <h1>Business IT Support</h1>
+            <p>Reliable, proactive technology solutions tailored for small businesses.</p>
+            <a href="#business-services" class="cta-button">Explore Services</a>
         </div>
     </section>
 
-    <main class="container">
-        <div id="blog-list" class="blog-grid">
-            <div class="text-center">Loading articles...</div>
-        </div>
-    </main>
+    <!-- Business Services Section -->
+    <section id="business-services" class="services-section">
+        <div class="container">
+            <h2 class="section-title reveal">Comprehensive Business Protection</h2>
+            <p class="section-subtitle reveal">Expert tools and expertise to keep your business technology secure, up-to-date, and running at peak performance.</p>
 
+            <div class="service-grid">
+
+                <div class="service-card reveal">
+                    <div class="service-icon">&#x1F6E1;&#xFE0F;</div>
+                    <h3>EDR Protection &amp; Monitoring</h3>
+                    <p>Endpoint Detection and Response (EDR) includes 24/7 proactive monitoring and goes beyond traditional antivirus to detect and stop advanced threats, ransomware, and zero-day attacks before they can damage your business.</p>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-icon">&#x1F5A5;&#xFE0F;</div>
+                    <h3>Patching &amp; Updates</h3>
+                    <p>Critical security patches and software updates are applied immediately, minimizing security risks and keeping systems running smoothly.</p>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-icon">&#x2601;&#xFE0F;</div>
+                    <h3>Backups &amp; Disaster Recovery</h3>
+                    <p>Protect your critical business data with automated, secure cloud backups. Information is kept recoverable in the event of hardware failure, theft, or accidental deletion.</p>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-icon">&#x1F310;</div>
+                    <h3>Network Management</h3>
+                    <p>Reliable WiFi and wired networking designed for business use. Secure guest networks, VPN setup for remote work, and robust mesh systems for total coverage.</p>
+                </div>
+
+
+
+                <div class="service-card reveal">
+                    <div class="service-icon">&#x1F527;</div>
+                    <h3>On-Call IT Support</h3>
+                    <p>Priority support for business clients to resolve issues and get systems back up and running.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <h2>Why Partner With Blue Droid?</h2>
+                    <p>As a small business owner myself, I understand that you don't have time to worry about IT. You need technology that just works.</p>
+                    <p><strong>Personalized Attention:</strong> You won't get lost in a ticketing system. When you call, you talk directly to me.</p>
+                    <p><strong>Predictable Costs:</strong> I offer flat-rate service plans so you can budget your IT expenses without surprises.</p>
+                    <p><strong>Local Expertise:</strong> I'm right here in Milford, ready to provide onsite support whenever you need it.</p>
+                    <a href="index.html#contact" class="cta-primary">Get a Free Consultation</a>
+                </div>
+                <div class="about-image reveal">
+                    <img src="images/blue-laptop.webp" alt="Business IT Support" class="about-photo" width="400" height="300" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Footer -->
     <footer id="site-footer">
         <div class="footer-content">
     <div class="footer-section">
@@ -108,15 +172,6 @@
     <script src="analytics.js" defer></script>
     <script src="consent-banner.js" defer></script>
     <script src="scripts.js" defer></script>
-    <script src="CMS/blog-loader.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Wait for shared layout to render if needed, or just load posts
-            setTimeout(() => {
-                loadPosts('blog-list');
-            }, 100);
-        });
-    </script>
 </body>
 
 </html>

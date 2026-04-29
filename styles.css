@@ -218,6 +218,23 @@ nav {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
+.cta-primary {
+    background: var(--primary);
+    color: var(--on-primary);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: all 0.25s ease;
+}
+
+.cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(65, 105, 225, 0.3);
+}
+
 /* Legacy Toggle Styles Removed */
 
 /* Condensed Hero for Blog Posts */
@@ -498,9 +515,9 @@ footer {
 .contact-card p,
 .section-subtitle {
     text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
 }
 
 .about-text p,
@@ -577,7 +594,7 @@ footer {
     .service-card p,
     .trust-item p {
         text-align: center;
-        hyphens: auto;
+        hyphens: none;
     }
 
     .container {
