@@ -86,13 +86,22 @@ p a:focus {
 }
 
 nav {
-    background: var(--nav-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 100%;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: -1;
 }
 
 .nav-container { position: relative;
@@ -107,6 +116,7 @@ nav {
 .nav-container .logo {
     height: 50px;
     width: auto !important;
+    margin-left: -20px; /* Offset built-in transparent padding in logo.png */
 }
 
 .nav-links {
@@ -178,8 +188,9 @@ nav {
 .overflow-menu {
     display: none;
     position: absolute;
-    top: 2rem;
+    top: 4.5rem;
     right: 0;
+    z-index: 100;
     background: var(--nav-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -217,17 +228,17 @@ nav {
 
 /* Centered hamburger menu when primary nav is fully hidden */
 .nav-empty .nav-actions {
-    flex-grow: 1;
+    flex-grow: 0;
 }
 
 .nav-empty .menu-wrapper {
-    margin: 0 auto;
+    margin: 0;
 }
 
 .nav-empty .overflow-menu {
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0;
+    left: auto;
+    transform: none;
 }
 
 
@@ -641,7 +652,7 @@ footer {
 }
 
 .footer-section h4 {
-    color: var(--primary);
+    color: var(--clr-white);
     margin-bottom: 1rem;
 }
 
@@ -722,6 +733,8 @@ footer {
         order: -1;
     }
 
+    .about-text,
+    .feature-content,
     .about-text p,
     .service-card p,
     .trust-item p,
