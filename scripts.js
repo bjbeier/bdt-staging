@@ -16,37 +16,82 @@ function revealEmail(linkElement) {
 
 
 function initNav() {
+    const primaryNav = document.getElementById('primary-nav');
+    const overflowNav = document.getElementById('overflow-nav');
+    const menuToggle = document.getElementById('menuToggle');
+    const navContainer = document.getElementById('navContainer');
+    const logoWrapper = document.querySelector('.logo-wrapper');
+    const navActions = document.getElementById('navActions');
 
-    const navLinks = document.getElementById('navLinks');
+    if (!primaryNav || !overflowNav || !menuToggle || !navContainer || !logoWrapper || !navActions) return;
 
-    const menuToggle = document.querySelector('[data-menu-toggle]');
+    // Toggle dropdown
+    menuToggle.addEventListener('click', () => {
+        overflowNav.classList.toggle('active');
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+    });
 
-
-
-    if (menuToggle && navLinks) {
-
-        menuToggle.addEventListener('click', () => {
-
-            navLinks.classList.toggle('active');
-
+    // Close mobile menu when clicking a link
+    overflowNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            overflowNav.classList.remove('active');
         });
+    });
 
+    function updateNav() {
+        if (!navContainer || !logoWrapper || !navActions) return;
 
+        // Temporarily remove nav-empty so navActions returns to its natural width for calculation
+        navContainer.classList.remove('nav-empty');
 
-        // Close mobile menu when clicking a link
+        // Calculate available width for primary-nav
+        // 140px is a safe buffer for flex gaps and padding
+        let availableWidth = navContainer.clientWidth - logoWrapper.clientWidth - navActions.clientWidth - 140;
 
-        navLinks.querySelectorAll('a').forEach(link => {
+        // Move items to overflow if primaryNav is too wide
+        while (primaryNav.scrollWidth > availableWidth && primaryNav.children.length > 0) {
+            overflowNav.insertBefore(primaryNav.lastElementChild, overflowNav.firstElementChild);
+            // Recalculate availableWidth because navActions width might have changed if menuToggle appeared
+            availableWidth = navContainer.clientWidth - logoWrapper.clientWidth - navActions.clientWidth - 140;
+        }
 
-            link.addEventListener('click', () => {
+        // Try to move items back to primaryNav if there's enough room
+        while (overflowNav.children.length > 0) {
+            const firstItem = overflowNav.firstElementChild;
+            primaryNav.appendChild(firstItem);
+            
+            // Recalculate
+            availableWidth = navContainer.clientWidth - logoWrapper.clientWidth - navActions.clientWidth - 140;
 
-                navLinks.classList.remove('active');
+            if (primaryNav.scrollWidth > availableWidth) {
+                // If it doesn't fit, put it back and stop
+                overflowNav.insertBefore(primaryNav.lastElementChild, overflowNav.firstElementChild);
+                break;
+            }
+        }
 
-            });
+        // Show/hide hamburger
+        if (overflowNav.children.length > 0) {
+            menuToggle.style.visibility = 'visible';
+            menuToggle.style.display = 'block';
+        } else {
+            menuToggle.style.visibility = 'hidden';
+            menuToggle.style.display = 'none';
+            overflowNav.classList.remove('active');
+        }
 
-        });
-
+        // Add 'nav-empty' class when primaryNav is completely hidden
+        if (primaryNav.children.length === 0) {
+            navContainer.classList.add('nav-empty');
+        } else {
+            navContainer.classList.remove('nav-empty');
+        }
     }
 
+    window.addEventListener('resize', updateNav);
+    // Initial call
+    setTimeout(updateNav, 50);
 }
 
 
@@ -335,8 +380,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initNav();
 
     initSmoothScroll();
-
-    initHeroParticles();
 
     initEmailReveal(); // Security Fix: Initialize email obfuscation
     initScrollReveal();

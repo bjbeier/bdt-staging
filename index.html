@@ -24,22 +24,29 @@
     <!-- Shared Navigation -->
     <header id="site-header">
         <nav>
-    <div class="nav-container">
-        <img src="images/logo.png" alt="Blue Droid Technologies" class="logo" width="180" height="50">
-        <button class="menu-toggle" data-menu-toggle aria-label="Toggle navigation">&#9776;</button>
-        <ul class="nav-links" id="navLinks">
+    <div class="nav-container" id="navContainer">
+        <a href="index.html" class="logo-wrapper">
+            <img src="images/logo.png" alt="Blue Droid Technologies" class="logo" width="180" height="50">
+        </a>
+        <ul class="nav-links" id="primary-nav">
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
+            <li><a href="residential.html">Residential</a></li>
             <li><a href="business.html">Business</a></li>
-            <li><a href="prices.html">Pricing</a></li>
+            <li><a href="recycling.html">Recycling</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <a href="tel:5132126714" class="phone-btn">
-            <span class="full">Call or Text &bull; (513) 212-6714</span>
-            <span class="short">(513) 212-6714</span>
-        </a>
+        <div class="nav-actions" id="navActions">
+            <div class="menu-wrapper">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" style="visibility: hidden;">&#9776;</button>
+                <ul class="overflow-menu" id="overflow-nav"></ul>
+            </div>
+            <a href="tel:5132126714" class="phone-btn">
+                <span class="full">Call or Text &bull; (513) 212-6714</span>
+                <span class="short">(513) 212-6714</span>
+            </a>
+        </div>
     </div>
 </nav>
     </header>
@@ -74,73 +81,43 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <h2 class="section-title reveal">How Can I Help You?</h2>
-            <p class="section-subtitle reveal">Whether you're at home or running a business, I'm here to make technology
-                work
-                for you</p>
 
-            <!-- Residential Services -->
-            <div class="service-category">
-                <h3 class="category-title">Residential Services</h3>
-                <div class="service-grid">
-                    <div class="service-card reveal" id="wifi">
-                        <div class="service-icon">&#x1F4F6;</div>
-                        <h3>WiFi Dead Zones &amp; Setup</h3>
-                        <p>Upgrading or expanding your WiFi? I'll ensure full coverage throughout your home.</p>
-                    </div>
-                    <div class="service-card reveal">
-                        <div class="service-icon">&#x267B;&#xFE0F;</div>
-                        <h3>Electronics Recycling</h3>
-                        <p>Responsibly dispose of old equipment with secure data wiping or destruction.</p>
-                    </div>
-                    <div class="service-card reveal">
-                        <div class="service-icon">&#x1F4F1;</div>
-                        <h3>Smartphone &amp; Tablet Help</h3>
-                        <p>New device setup, data migration, or just learning the features&mdash;I can help.</p>
-                    </div>
-                    <div class="service-card reveal">
-                        <div class="service-icon">&#x1F3E1;</div>
-                        <h3>Smart Home Setup</h3>
-                        <p>Need help with smart speakers, displays, or home automation? I've got you covered.</p>
-                    </div>
-                    <div class="service-card reveal">
-                        <div class="service-icon">&#x1F5A5;&#xFE0F;</div>
-                        <h3>Home Office Setup</h3>
-                        <p>Working from home? Let me help you create a productive, organized workspace.</p>
-                    </div>
-                    <div class="service-card reveal">
-                        <div class="service-icon">&#x1F4BB;</div>
-                        <h3>PC &amp; Laptop Repair</h3>
-                        <p>Computer running slow or acting up? I'll get it back to peak performance.</p>
-                    </div>
+
+    <!-- Featured Solutions Section -->
+    <section class="featured-solutions">
+        <div class="feature-row">
+            <div class="feature-block reveal">
+                <div class="feature-image-wrapper">
+                    <img src="images/business-it.png" alt="Business IT Solutions" loading="lazy">
+                </div>
+                <div class="feature-content">
+                    <h3>Proactive Business IT</h3>
+                    <p>Focus on growing your business while I handle the technology. From comprehensive security to seamless cloud backups, I provide enterprise-grade solutions tailored for small businesses.</p>
+                    <a href="business.html" class="cta-primary">Learn More</a>
                 </div>
             </div>
-
-            <!-- Business Services -->
-            <div class="service-category">
-                <h3 class="category-title">Small Business Services</h3>
-                <div class="service-grid">
-                    <div class="service-card reveal">
-                        <div class="service-icon">&#x1F6E1;&#xFE0F;</div>
-                        <h3>Security &amp; EDR</h3>
-                        <p>Advanced protection and 24/7 monitoring against cyber threats.</p>
-                    </div>
-                    <div class="service-card reveal">
-                        <div class="service-icon">&#x1F5A5;&#xFE0F;</div>
-                        <h3>Patching &amp; Updates</h3>
-                        <p>Proactive maintenance and security patches to keep systems running.</p>
-                    </div>
-                    <div class="service-card reveal">
-                        <div class="service-icon">&#x2601;&#xFE0F;</div>
-                        <h3>Backup Solutions</h3>
-                        <p>Secure cloud backups to protect your critical business data.</p>
-                    </div>
+        </div>
+        <div class="feature-row">
+            <div class="feature-block reverse reveal">
+                <div class="feature-image-wrapper">
+                    <img src="images/residential-support.png" alt="Residential Tech Support" loading="lazy">
                 </div>
-                <div style="text-align: center; margin-top: 3rem;" class="reveal">
-                    <a href="business.html" class="cta-primary">View All Business Services</a>
+                <div class="feature-content">
+                    <h3>Reliable Residential Support</h3>
+                    <p>Technology should make life easier, not more complicated. Whether you're setting up a smart home, fixing a slow PC, or expanding your WiFi coverage, I bring expert help right to your door.</p>
+                    <a href="residential.html" class="cta-primary">View Services</a>
+                </div>
+            </div>
+        </div>
+        <div class="feature-row">
+            <div class="feature-block reveal">
+                <div class="feature-image-wrapper">
+                    <img src="images/recycling-feature.png" alt="Electronics Recycling" loading="lazy">
+                </div>
+                <div class="feature-content">
+                    <h3>Electronics Recycling</h3>
+                    <p>Don't let old technology pile up or risk your personal data. I offer secure hard drive wiping and responsible recycling for your retired PCs, laptops, and smart devices.</p>
+                    <a href="recycling.html" class="cta-primary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -208,9 +185,9 @@
     <div class="footer-section">
         <h4>Services</h4>
         <ul>
-            <li><a href="index.html#services">Residential Support</a></li>
             <li><a href="business.html">Business IT Services</a></li>
-            <li><a href="index.html#services">Electronics Recycling</a></li>
+            <li><a href="residential.html">Residential Support</a></li>
+            <li><a href="recycling.html">Electronics Recycling</a></li>
         </ul>
     </div>
     <div class="footer-section">
@@ -218,7 +195,7 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="business.html">Business</a></li>
-            <li><a href="prices.html">Pricing</a></li>
+            <li><a href="recycling.html">Recycling</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#contact">Contact</a></li>

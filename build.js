@@ -16,7 +16,8 @@ const FOOTER_PLACEHOLDER = '<!-- FOOTER_PLACEHOLDER -->';
 const PAGES = [
     'index.html',
     'business.html',
-    'prices.html',
+    'recycling.html',
+    'residential.html',
     'blog.html',
     'post.html',
 ];

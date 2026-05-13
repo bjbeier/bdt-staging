@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Pricing | Blue Droid Technologies</title>
+    <title>Electronics Recycling | Blue Droid Technologies</title>
     <meta name="description"
-        content="Transparent pricing for tech support in Milford, OH. Flat rates from $3 for secure wipes to $250 for tutorials. All prices include tax.">
+        content="Secure electronics recycling and data destruction in Milford, OH. Safely dispose of old PCs, laptops, and phones.">
 
-    <!-- Security Headers (Meta Tags - Server-side headers recommended) -->
+    <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://static.cloudflareinsights.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://placehold.co https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://stats.g.doubleclick.net https://cloudflareinsights.com https://static.cloudflareinsights.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -25,22 +25,29 @@
     <!-- Shared Navigation -->
     <header id="site-header">
         <nav>
-    <div class="nav-container">
-        <img src="images/logo.png" alt="Blue Droid Technologies" class="logo" width="180" height="50">
-        <button class="menu-toggle" data-menu-toggle aria-label="Toggle navigation">&#9776;</button>
-        <ul class="nav-links" id="navLinks">
+    <div class="nav-container" id="navContainer">
+        <a href="index.html" class="logo-wrapper">
+            <img src="images/logo.png" alt="Blue Droid Technologies" class="logo" width="180" height="50">
+        </a>
+        <ul class="nav-links" id="primary-nav">
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
+            <li><a href="residential.html">Residential</a></li>
             <li><a href="business.html">Business</a></li>
-            <li><a href="prices.html">Pricing</a></li>
+            <li><a href="recycling.html">Recycling</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <a href="tel:5132126714" class="phone-btn">
-            <span class="full">Call or Text &bull; (513) 212-6714</span>
-            <span class="short">(513) 212-6714</span>
-        </a>
+        <div class="nav-actions" id="navActions">
+            <div class="menu-wrapper">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" style="visibility: hidden;">&#9776;</button>
+                <ul class="overflow-menu" id="overflow-nav"></ul>
+            </div>
+            <a href="tel:5132126714" class="phone-btn">
+                <span class="full">Call or Text &bull; (513) 212-6714</span>
+                <span class="short">(513) 212-6714</span>
+            </a>
+        </div>
     </div>
 </nav>
     </header>
@@ -48,43 +55,19 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Transparent Pricing</h1>
-            <p>Simple, honest rates with no hidden fees. All prices include tax.</p>
-            <a href="#pricing" class="cta-button">View All Rates</a>
+            <h1>Electronics Recycling</h1>
+            <p>Secure data destruction and responsible disposal of your old technology.</p>
+            <a href="#recycling-rates" class="cta-button">View Pickup Rates</a>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="services-section">
+    <!-- Pricing Section (Moved up) -->
+    <section id="recycling-rates" class="services-section">
         <div class="container">
-            <h2 class="section-title reveal">Service Rates</h2>
-            <p class="section-subtitle reveal">Clear, upfront pricing &mdash; what you see is what you pay. Discounts
-                available
-                for first responders, veterans, and teachers.</p>
+            <h2 class="section-title reveal">Recycling & Data Destruction Rates</h2>
+            <p class="section-subtitle reveal">Transparent pricing for peace of mind.</p>
 
             <div class="service-grid">
-
-                <div class="service-card reveal">
-                    <div class="service-icon">&#x1F527;</div>
-                    <h3>General Troubleshooting</h3>
-                    <p><strong>$125/hour</strong></p>
-                    <p>30-minute minimum onsite<br>15-minute minimum remote</p>
-                </div>
-
-                <div class="service-card reveal">
-                    <div class="service-icon">&#x1F4DA;</div>
-                    <h3>Tutorial / Training Session</h3>
-                    <p><strong>$250</strong> &mdash; 90 minutes (1 person)</p>
-                    <p>+$50 per extra person or 30 minutes<br>Includes planning time</p>
-                </div>
-
-                <div class="service-card reveal">
-                    <div class="service-icon">&#x26A1;</div>
-                    <h3>SSD Upgrade + Data Migration</h3>
-                    <p><strong>$125 flat</strong></p>
-                    <p>Includes cloning, secure wipe of old drive, and proper disposal<br>(SSD purchased separately)</p>
-                </div>
-
                 <div class="service-card reveal">
                     <div class="service-icon">&#x1F6E1;&#xFE0F;</div>
                     <h3>Secure Hard Drive Wipe</h3>
@@ -96,15 +79,28 @@
                     <div class="service-icon">&#x267B;&#xFE0F;</div>
                     <h3>Electronics Recycling Pickup</h3>
                     <p><strong>Starting at $35</strong></p>
-                    <p>+$5/computer &bull; +$10/monitor &bull; +$15/box peripherals &bull; +$2/phone<br><strong>10%
-                            off</strong> for 10+ items</p>
+                    <p>+$5/computer &bull; +$10/monitor &bull; +$15/box peripherals &bull; +$2/phone<br><strong>10% off</strong> for 10+ items</p>
                 </div>
-
             </div>
+        </div>
+    </section>
 
-            <p class="pricing-disclaimer">
-                Any service not listed above is billed at the standard <strong>$125/hour</strong> rate.
-            </p>
+    <!-- Recycling Details Section (Moved down) -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <h2>Protect Your Data, Protect The Planet</h2>
+                    <p>Don't let old technology pile up in your closets or risk your personal data by throwing it out. I offer secure hard drive wiping and responsible recycling for your retired PCs, laptops, and smart devices.</p>
+                    <p><strong>DoD-Level Wiping:</strong> All data-bearing devices undergo a Department of Defense standard overwrite or physical destruction.</p>
+                    <p><strong>Convenient Pickup:</strong> I come directly to your home or office to collect the items, saving you a trip to a specialized facility.</p>
+                    <p><strong>Responsible Disposal:</strong> Components are properly recycled, keeping toxic heavy metals out of local landfills.</p>
+                </div>
+                <div class="about-image reveal">
+                    <img src="images/recycling-feature.png" alt="Electronics Recycling" class="about-photo" width="400"
+                        height="300" loading="lazy">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -119,9 +115,9 @@
     <div class="footer-section">
         <h4>Services</h4>
         <ul>
-            <li><a href="index.html#services">Residential Support</a></li>
             <li><a href="business.html">Business IT Services</a></li>
-            <li><a href="index.html#services">Electronics Recycling</a></li>
+            <li><a href="residential.html">Residential Support</a></li>
+            <li><a href="recycling.html">Electronics Recycling</a></li>
         </ul>
     </div>
     <div class="footer-section">
@@ -129,7 +125,7 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="business.html">Business</a></li>
-            <li><a href="prices.html">Pricing</a></li>
+            <li><a href="recycling.html">Recycling</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#contact">Contact</a></li>
