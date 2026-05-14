@@ -39,20 +39,34 @@ function main() {
         let html = fs.readFileSync(filePath, 'utf8');
         let changed = false;
 
+        // Inject Navigation
         if (html.includes(NAV_PLACEHOLDER)) {
             html = html.replace(NAV_PLACEHOLDER, nav);
             changed = true;
         } else {
-            console.warn(`  [WARN] ${page}: NAV_PLACEHOLDER not found.`);
-            anyError = true;
+            const navRegex = /<header id="site-header">[\s\S]*?<\/header>/;
+            if (navRegex.test(html)) {
+                html = html.replace(navRegex, `<header id="site-header">\n${nav}\n    </header>`);
+                changed = true;
+            } else {
+                console.warn(`  [WARN] ${page}: Navigation placeholder or <header id="site-header"> not found.`);
+                anyError = true;
+            }
         }
 
+        // Inject Footer
         if (html.includes(FOOTER_PLACEHOLDER)) {
             html = html.replace(FOOTER_PLACEHOLDER, footer);
             changed = true;
         } else {
-            console.warn(`  [WARN] ${page}: FOOTER_PLACEHOLDER not found.`);
-            anyError = true;
+            const footerRegex = /<footer id="site-footer">[\s\S]*?<\/footer>/;
+            if (footerRegex.test(html)) {
+                html = html.replace(footerRegex, `<footer id="site-footer">\n${footer}\n    </footer>`);
+                changed = true;
+            } else {
+                console.warn(`  [WARN] ${page}: Footer placeholder or <footer id="site-footer"> not found.`);
+                anyError = true;
+            }
         }
 
         if (changed) {
