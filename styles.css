@@ -707,6 +707,15 @@ footer {
 /* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 1024px) {
 
+    .nav-container .logo {
+        height: 70px;
+        margin-left: -10px;
+    }
+
+    .nav-container {
+        padding: 0.75rem 1.25rem;
+    }
+
     /* Priority+ Nav handled via JS */
 
     /* Phone Button */
