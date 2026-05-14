@@ -716,6 +716,26 @@ footer {
         padding: 0.75rem 1.25rem;
     }
 
+    /* Make overflow menu span full nav width on mobile.
+       menu-wrapper must be static so overflow-menu positions
+       relative to nav-container. The nav-empty transform override
+       is critical — transform creates a containing block that
+       would trap the menu inside the tiny wrapper. */
+    .menu-wrapper {
+        position: static !important;
+        transform: none !important;
+        left: auto !important;
+        top: auto !important;
+    }
+
+    /* Center the hamburger button itself in nav-empty state */
+    .nav-empty .menu-toggle {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
     /* Priority+ Nav handled via JS */
 
     /* Phone Button */
