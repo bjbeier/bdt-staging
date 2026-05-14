@@ -45,27 +45,26 @@ function initNav() {
         // Temporarily remove nav-empty so navActions returns to its natural width for calculation
         navContainer.classList.remove('nav-empty');
 
-        // Calculate available width for primary-nav
-        // 140px is a safe buffer for flex gaps and padding
-        let availableWidth = navContainer.clientWidth - logoWrapper.clientWidth - navActions.clientWidth - 140;
+        function getAvailableWidth() {
+            if (window.innerWidth <= 600) return -1;
+            return navContainer.clientWidth - logoWrapper.clientWidth - navActions.clientWidth - 140;
+        }
+
+        let availableWidth = getAvailableWidth();
 
         // Move items to overflow if primaryNav is too wide
         while (primaryNav.scrollWidth > availableWidth && primaryNav.children.length > 0) {
             overflowNav.insertBefore(primaryNav.lastElementChild, overflowNav.firstElementChild);
-            // Recalculate availableWidth because navActions width might have changed if menuToggle appeared
-            availableWidth = navContainer.clientWidth - logoWrapper.clientWidth - navActions.clientWidth - 140;
+            availableWidth = getAvailableWidth();
         }
 
         // Try to move items back to primaryNav if there's enough room
         while (overflowNav.children.length > 0) {
             const firstItem = overflowNav.firstElementChild;
             primaryNav.appendChild(firstItem);
-            
-            // Recalculate
-            availableWidth = navContainer.clientWidth - logoWrapper.clientWidth - navActions.clientWidth - 140;
+            availableWidth = getAvailableWidth();
 
             if (primaryNav.scrollWidth > availableWidth) {
-                // If it doesn't fit, put it back and stop
                 overflowNav.insertBefore(primaryNav.lastElementChild, overflowNav.firstElementChild);
                 break;
             }
