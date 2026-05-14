@@ -116,7 +116,7 @@ nav::before {
 .nav-container .logo {
     height: 50px;
     width: auto !important;
-    margin-left: -20px; /* Offset built-in transparent padding in logo.png */
+    margin-left: -20px; /* Offset built-in transparent padding in logo.webp */
 }
 
 .nav-links {
@@ -188,19 +188,20 @@ nav::before {
 .overflow-menu {
     display: none;
     position: absolute;
-    top: 4.5rem;
-    right: 0;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    width: 100%;
+    text-align: center;
     z-index: 100;
     background: var(--nav-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     list-style: none;
-    padding: 1rem;
-    border-radius: 8px;
+    padding: 1rem 0;
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     flex-direction: column;
-    min-width: 180px;
 }
 
 .overflow-menu.active {
@@ -228,24 +229,28 @@ nav::before {
 
 /* Centered hamburger menu when primary nav is fully hidden */
 .nav-empty .nav-actions {
-    flex-grow: 0;
+    position: static;
 }
 
 .nav-empty .menu-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     margin: 0;
 }
 
 .nav-empty .overflow-menu {
-    right: 0;
-    left: auto;
-    transform: none;
+    /* Rules handled above now */
 }
+
+
 
 
 /* ==================== HERO SECTION ==================== */
 .hero {
     position: relative;
-    background-image: url('images/hero-surface.png');
+    background-image: url('images/hero-surface.webp');
     background-size: cover;
     background-position: center;
     color: var(--clr-white);
@@ -1108,5 +1113,11 @@ footer {
     .back-to-top-button {
         width: 45px;
         height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container .logo {
+        height: 35px;
     }
 }
