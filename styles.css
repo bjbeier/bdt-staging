@@ -114,7 +114,7 @@ nav::before {
 }
 
 .nav-container .logo {
-    height: 50px;
+    height: 53px;
     width: auto !important;
     margin-left: -20px; /* Offset built-in transparent padding in logo.webp */
 }
@@ -231,7 +231,7 @@ nav::before {
     color: var(--primary);
 }
 
-/* Centered hamburger menu when primary nav is fully hidden */
+/* Nav-empty: basic positioning when primary links are fully collapsed */
 .nav-empty .nav-actions {
     position: static;
 }
@@ -242,10 +242,6 @@ nav::before {
     top: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
-}
-
-.nav-empty .overflow-menu {
-    /* Rules handled above now */
 }
 
 
@@ -712,7 +708,7 @@ footer {
 @media (max-width: 1024px) {
 
     .nav-container .logo {
-        height: 50px;
+        height: 53px;
         margin-left: -10px;
     }
 
@@ -1151,8 +1147,48 @@ footer {
     }
 }
 
+/* Stacked two-row nav on small mobile screens */
 @media (max-width: 480px) {
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-container .logo-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
     .nav-container .logo {
-        height: 35px;
+        height: 53px;
+        margin-left: 0;
+    }
+
+    .nav-container .nav-actions {
+        position: static;
+        width: 100%;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .nav-container .menu-wrapper {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+    }
+
+    /* Nav-empty hamburger: undo the centering transform at this breakpoint */
+    .nav-empty .menu-toggle {
+        position: static;
+        transform: none;
+    }
+
+    .phone-btn {
+        height: auto;
+        padding: 0.35rem 1rem;
+        font-size: 1rem;
     }
 }
