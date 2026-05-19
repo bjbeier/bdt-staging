@@ -67,7 +67,13 @@ function handleSettingsSave(e) {
 
 async function fetchPosts() {
     showToast('Loading from GitHub...', 'info');
-    postListEl.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:2rem;">Loading...</div>';
+    postListEl.innerHTML = '';
+    const loadingDiv = document.createElement('div');
+    loadingDiv.style.gridColumn = '1/-1';
+    loadingDiv.style.textAlign = 'center';
+    loadingDiv.style.padding = '2rem';
+    loadingDiv.textContent = 'Loading...';
+    postListEl.appendChild(loadingDiv);
 
     try {
         const path = 'CMS/posts.json';
@@ -102,7 +108,13 @@ async function fetchPosts() {
 
     } catch (error) {
         console.error(error);
-        postListEl.innerHTML = `<div style="grid-column: 1/-1; text-align:center; color:red;">Error: ${error.message}</div>`;
+        postListEl.innerHTML = '';
+        const errorDiv = document.createElement('div');
+        errorDiv.style.gridColumn = '1/-1';
+        errorDiv.style.textAlign = 'center';
+        errorDiv.style.color = 'red';
+        errorDiv.textContent = `Error: ${error.message}`;
+        postListEl.appendChild(errorDiv);
         showToast('Error loading blog', 'error');
     }
 }
@@ -153,7 +165,13 @@ function renderPosts() {
     postListEl.innerHTML = '';
 
     if (posts.length === 0) {
-        postListEl.innerHTML = '<div style="grid-column:1/-1; text-align:center; opacity:0.6;">No posts. Create your first one!</div>';
+        postListEl.innerHTML = '';
+        const noPostsDiv = document.createElement('div');
+        noPostsDiv.style.gridColumn = '1/-1';
+        noPostsDiv.style.textAlign = 'center';
+        noPostsDiv.style.opacity = '0.6';
+        noPostsDiv.textContent = 'No posts. Create your first one!';
+        postListEl.appendChild(noPostsDiv);
         return;
     }
 
@@ -162,15 +180,51 @@ function renderPosts() {
     sorted.forEach(post => {
         const card = document.createElement('div');
         card.className = 'post-card';
-        card.innerHTML = `
-            <div style="font-size:0.8rem; opacity:0.6; margin-bottom:0.5rem">${post.date}</div>
-            <h3 style="margin-bottom:0.5rem">${escapeHtml(post.title)}</h3>
-            <p style="font-size:0.9rem; opacity:0.8; margin-bottom:1.5rem">${escapeHtml(post.summary || '')}</p>
-            <div style="display:flex; gap:0.5rem; justify-content:flex-end">
-                <button class="btn" style="padding:0.4rem 0.8rem; font-size:0.85rem" onclick="editPost('${post.id}')">Edit</button>
-                <button class="btn" style="padding:0.4rem 0.8rem; font-size:0.85rem; color:red; border-color:red" onclick="deletePost('${post.id}')">Delete</button>
-            </div>
-        `;
+
+        const dateEl = document.createElement('div');
+        dateEl.style.fontSize = '0.8rem';
+        dateEl.style.opacity = '0.6';
+        dateEl.style.marginBottom = '0.5rem';
+        dateEl.textContent = post.date;
+        card.appendChild(dateEl);
+
+        const titleEl = document.createElement('h3');
+        titleEl.style.marginBottom = '0.5rem';
+        titleEl.textContent = post.title;
+        card.appendChild(titleEl);
+
+        const summaryEl = document.createElement('p');
+        summaryEl.style.fontSize = '0.9rem';
+        summaryEl.style.opacity = '0.8';
+        summaryEl.style.marginBottom = '1.5rem';
+        summaryEl.textContent = post.summary || '';
+        card.appendChild(summaryEl);
+
+        const actionsEl = document.createElement('div');
+        actionsEl.style.display = 'flex';
+        actionsEl.style.gap = '0.5rem';
+        actionsEl.style.justifyContent = 'flex-end';
+
+        const editBtn = document.createElement('button');
+        editBtn.className = 'btn';
+        editBtn.style.padding = '0.4rem 0.8rem';
+        editBtn.style.fontSize = '0.85rem';
+        editBtn.textContent = 'Edit';
+        editBtn.addEventListener('click', () => editPost(post.id));
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn';
+        deleteBtn.style.padding = '0.4rem 0.8rem';
+        deleteBtn.style.fontSize = '0.85rem';
+        deleteBtn.style.color = 'red';
+        deleteBtn.style.borderColor = 'red';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.addEventListener('click', () => deletePost(post.id));
+
+        actionsEl.appendChild(editBtn);
+        actionsEl.appendChild(deleteBtn);
+        card.appendChild(actionsEl);
+
         postListEl.appendChild(card);
     });
 }

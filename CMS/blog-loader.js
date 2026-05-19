@@ -21,41 +21,83 @@ async function loadPosts(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    container.innerHTML = '<div class="text-center animate-pulse">Loading articles...</div>';
+    container.innerHTML = '';
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'text-center animate-pulse';
+    loadingDiv.textContent = 'Loading articles...';
+    container.appendChild(loadingDiv);
     const posts = await fetchBlogPosts();
 
     if (posts.length === 0) {
-        container.innerHTML = '<div class="text-center">No articles found. Check back later!</div>';
+        container.innerHTML = '';
+        const noArticlesDiv = document.createElement('div');
+        noArticlesDiv.className = 'text-center';
+        noArticlesDiv.textContent = 'No articles found. Check back later!';
+        container.appendChild(noArticlesDiv);
         return;
     }
 
     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    const html = posts.map(post => {
-        const tagsHtml = (post.tags || []).map(t => `#${t}`).join(' ');
-        return `
-        <article class="blog-card reveal">
-            ${post.image ? `<div class="blog-card-image"><img src="${post.image}" alt="${post.title}"></div>` : ''}
-            <div class="blog-card-content">
-                <header>
-                    <div class="blog-meta">
-                        <span>${formatDate(post.date)}</span>
-                        <span class="blog-tags">${tagsHtml}</span>
-                    </div>
-                    <h3>
-                        <a href="post.html?slug=${post.slug}">${post.title}</a>
-                    </h3>
-                </header>
-                <p>${post.summary || ''}</p>
-                <div class="blog-card-footer">
-                    <a href="post.html?slug=${post.slug}" class="read-more">Read Full Article &rarr;</a>
-                </div>
-            </div>
-        </article>
-        `;
-    }).join('');
+    container.innerHTML = '';
+    posts.forEach(post => {
+        const article = document.createElement('article');
+        article.className = 'blog-card reveal';
 
-    container.innerHTML = html;
+        if (post.image) {
+            const imgDiv = document.createElement('div');
+            imgDiv.className = 'blog-card-image';
+            const img = document.createElement('img');
+            img.src = post.image;
+            img.alt = post.title;
+            imgDiv.appendChild(img);
+            article.appendChild(imgDiv);
+        }
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'blog-card-content';
+
+        const header = document.createElement('header');
+        
+        const metaDiv = document.createElement('div');
+        metaDiv.className = 'blog-meta';
+        
+        const dateSpan = document.createElement('span');
+        dateSpan.textContent = formatDate(post.date);
+        metaDiv.appendChild(dateSpan);
+
+        const tagsSpan = document.createElement('span');
+        tagsSpan.className = 'blog-tags';
+        tagsSpan.textContent = (post.tags || []).map(t => `#${t}`).join(' ');
+        metaDiv.appendChild(tagsSpan);
+
+        header.appendChild(metaDiv);
+
+        const h3 = document.createElement('h3');
+        const titleLink = document.createElement('a');
+        titleLink.href = `post.html?slug=${post.slug}`;
+        titleLink.textContent = post.title;
+        h3.appendChild(titleLink);
+        header.appendChild(h3);
+
+        contentDiv.appendChild(header);
+
+        const summaryP = document.createElement('p');
+        summaryP.textContent = post.summary || '';
+        contentDiv.appendChild(summaryP);
+
+        const footerDiv = document.createElement('div');
+        footerDiv.className = 'blog-card-footer';
+        const readMoreLink = document.createElement('a');
+        readMoreLink.href = `post.html?slug=${post.slug}`;
+        readMoreLink.className = 'read-more';
+        readMoreLink.innerHTML = 'Read Full Article &rarr;';
+        footerDiv.appendChild(readMoreLink);
+        
+        contentDiv.appendChild(footerDiv);
+        article.appendChild(contentDiv);
+        container.appendChild(article);
+    });
     if (typeof initScrollReveal === 'function') {
         initScrollReveal();
     }
@@ -69,16 +111,41 @@ async function loadSinglePost(containerId) {
     const slug = params.get('slug');
 
     if (!slug) {
-        container.innerHTML = '<div class="text-center text-red-500">Article not specified.</div>';
+        container.innerHTML = '';
+        const noSlugDiv = document.createElement('div');
+        noSlugDiv.className = 'text-center text-red-500';
+        noSlugDiv.textContent = 'Article not specified.';
+        container.appendChild(noSlugDiv);
         return;
     }
 
-    container.innerHTML = '<div class="text-center animate-pulse">Loading article...</div>';
+    container.innerHTML = '';
+    const loadingSingleDiv = document.createElement('div');
+    loadingSingleDiv.className = 'text-center animate-pulse';
+    loadingSingleDiv.textContent = 'Loading article...';
+    container.appendChild(loadingSingleDiv);
     const posts = await fetchBlogPosts();
     const post = posts.find(p => p.slug === slug);
 
     if (!post) {
-        container.innerHTML = '<div class="text-center py-20"><h1>404</h1><p>Article not found.</p><a href="blog.html">Return to Blog</a></div>';
+        container.innerHTML = '';
+        const errorContainer = document.createElement('div');
+        errorContainer.className = 'text-center py-20';
+        
+        const h1 = document.createElement('h1');
+        h1.textContent = '404';
+        errorContainer.appendChild(h1);
+        
+        const p = document.createElement('p');
+        p.textContent = 'Article not found.';
+        errorContainer.appendChild(p);
+        
+        const backLink = document.createElement('a');
+        backLink.href = 'blog.html';
+        backLink.textContent = 'Return to Blog';
+        errorContainer.appendChild(backLink);
+        
+        container.appendChild(errorContainer);
         document.title = 'Post Not Found | BDT';
         return;
     }
@@ -86,21 +153,51 @@ async function loadSinglePost(containerId) {
     document.title = `${post.title} | BDT`;
     const tagsHtml = (post.tags || []).map(t => `#${t}`).join(' ');
 
-    container.innerHTML = `
-        <article class="blog-post-content reveal">
-            <header class="blog-post-header reveal">
-                <div class="blog-meta">${formatDate(post.date)} | <span class="blog-tags">${tagsHtml}</span></div>
-                <h1 class="post-title">${post.title}</h1>
-                ${post.image ? `<img src="${post.image}" alt="${post.title}" class="post-featured-image reveal">` : ''}
-            </header>
-            <div class="post-body reveal">
-                ${post.content}
-            </div>
-            <div class="post-footer reveal">
-                <a href="blog.html" class="cta-button">Back to All Posts</a>
-            </div>
-        </article>
-    `;
+    container.innerHTML = '';
+    const article = document.createElement('article');
+    article.className = 'blog-post-content reveal';
+
+    const header = document.createElement('header');
+    header.className = 'blog-post-header reveal';
+
+    const metaDiv = document.createElement('div');
+    metaDiv.className = 'blog-meta';
+    metaDiv.textContent = `${formatDate(post.date)} | `;
+    const tagsSpan = document.createElement('span');
+    tagsSpan.className = 'blog-tags';
+    tagsSpan.textContent = tagsHtml;
+    metaDiv.appendChild(tagsSpan);
+    header.appendChild(metaDiv);
+
+    const titleH1 = document.createElement('h1');
+    titleH1.className = 'post-title';
+    titleH1.textContent = post.title;
+    header.appendChild(titleH1);
+
+    if (post.image) {
+        const img = document.createElement('img');
+        img.src = post.image;
+        img.alt = post.title;
+        img.className = 'post-featured-image reveal';
+        header.appendChild(img);
+    }
+    article.appendChild(header);
+
+    const bodyDiv = document.createElement('div');
+    bodyDiv.className = 'post-body reveal';
+    bodyDiv.innerHTML = post.content;
+    article.appendChild(bodyDiv);
+
+    const footerDiv = document.createElement('div');
+    footerDiv.className = 'post-footer reveal';
+    const ctaLink = document.createElement('a');
+    ctaLink.href = 'blog.html';
+    ctaLink.className = 'cta-button';
+    ctaLink.textContent = 'Back to All Posts';
+    footerDiv.appendChild(ctaLink);
+    article.appendChild(footerDiv);
+
+    container.appendChild(article);
     if (typeof initScrollReveal === 'function') {
         initScrollReveal();
     }
