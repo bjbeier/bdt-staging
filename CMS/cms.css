@@ -1,20 +1,22 @@
 /* BDT CMS styles - Adapted from BJB but using BDT design tokens */
 :root {
-    --primary-blue: #4169E1;
-    --charcoal: #2C3E50;
-    --soft-gray: #F7F9FC;
-    --white: #FFFFFF;
+    --primary-blue: var(--primary, #003366);
+    --charcoal: var(--text-main, #2C3E50);
+    --soft-gray: var(--bg-alt, #E2E8F0);
+    --white: var(--bg-main, #FFFFFF);
+    --border: var(--card-border, #e5e7eb);
     --danger: #ef4444;
     --success: #10B981;
-    --border: #e5e7eb;
 }
 
-html.dark {
-    --primary-blue: #5B7FE8;
-    --charcoal: #e0e7ff;
-    --soft-gray: #1e293b;
-    --white: #0f172a;
-    --border: #334155;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-blue: var(--primary, #3399FF);
+        --charcoal: var(--text-main, #e0e7ff);
+        --soft-gray: var(--bg-alt, #1e293b);
+        --white: var(--bg-main, #0f172a);
+        --border: var(--card-border, #334155);
+    }
 }
 
 body {
@@ -31,7 +33,7 @@ body {
     padding: 2rem;
 }
 
-header {
+.cms-actions-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,9 +42,10 @@ header {
     margin-bottom: 2rem;
 }
 
-h1 {
+.cms-actions-bar h2 {
     color: var(--primary-blue);
     font-size: 1.75rem;
+    margin: 0;
 }
 
 .btn {
