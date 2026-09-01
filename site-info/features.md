@@ -28,7 +28,7 @@ A living inventory of every section and interactive element on the Blue Droid Te
 - **Small Business Services** (4 cards): IT Support, Network & Mesh Installation, Security Solutions, Device Management
 
 ### About (`#about`)
-- Two-column layout: text + photo (`images/bjbeier.webp`)
+- Two-column layout: text + photo (`images/bjbeier_2026.webp`)
 - Company story, mission, and discount mention (first responders, veterans, teachers)
 
 ### Contact (`#contact`)
