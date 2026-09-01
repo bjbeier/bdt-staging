@@ -73,5 +73,5 @@ No external font CDN is used — the site relies on the native system font stack
 - **Approachable and personal** — first-person ("I'm here to help"), plain English, no jargon
 - **Trust-focused** — emphasizes local ownership, experience, and personal service
 - **Tagline**: "Support Made Simple"
-- **Target audience**: Residential users and small businesses in Milford, OH area
+- **Target audience**: Small businesses in Milford, OH area
 - **Discounts**: Special pricing for first responders, veterans, and teachers

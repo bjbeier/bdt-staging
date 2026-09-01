@@ -17,7 +17,6 @@ const PAGES = [
     'index.html',
     'business.html',
     'recycling.html',
-    'residential.html',
     'blog.html',
     'post.html',
 ];

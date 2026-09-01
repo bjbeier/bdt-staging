@@ -24,7 +24,6 @@ A living inventory of every section and interactive element on the Blue Droid Te
 - Emoji icons, alternating background
 
 ### Services (`#services`)
-- **Residential Services** (6 cards): WiFi Dead Zones & Setup, Electronics Recycling, Smartphone & Tablet Help, Smart Home Setup, Home Office Setup, PC & Laptop Repair
 - **Small Business Services** (4 cards): IT Support, Network & Mesh Installation, Security Solutions, Device Management
 
 ### About (`#about`)
